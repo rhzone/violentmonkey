@@ -66,13 +66,13 @@ const TEXT_CHUNK_SIZE = IS_FIREFOX
 const BLOB_LIFE = 60e3;
 const SEND_XHR_PROPS = ['readyState', 'status', 'statusText'];
 const SEND_PROGRESS_PROPS = ['lengthComputable', 'loaded', 'total'];
-const quoteHeaderValue = str => `\"${str.replace(/[\\\"]/g, '\\$&')}\"`;
+const quoteHeaderValue = str => `"${str.replace(/[\\"]/g, '\\$&')}"`;
 const SEC_CH_UA = 'sec-ch-ua';
 const UA_GETTERS = {
   __proto__: null,
   'user-agent': val => val,
   /** @param {NavigatorUABrandVersion[]} brands */
-  [SEC_CH_UA]: brands => brands.map(b => `${quoteHeaderValue(b.brand)};v=\"${b.version}\"`).join(', '),
+  [SEC_CH_UA]: brands => brands.map(b => `${quoteHeaderValue(b.brand)};v="${b.version}"`).join(', '),
   [SEC_CH_UA + '-mobile']: val => `?${val ? 1 : 0}`,
   [SEC_CH_UA + '-platform']: quoteHeaderValue,
 };
